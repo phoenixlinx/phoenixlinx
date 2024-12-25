@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Enhancements</title>
+
+    <!-- Stylesheets -->
+
+    <link rel="stylesheet" href="../../styles/customStyles.css">
+    <link rel="stylesheet" href="../../styles/tables.css">
+    <!-- Prism.js Core and Plugins -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-highlight/prism-line-highlight.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-highlight/prism-line-highlight.min.js" defer></script>
+    
+    <script src="../../scripts/prismSyntax.js" defer></script> <!-- Custom Prism Functionality -->
+</head>
+<body>
+    <header>
+        <a href="databasesIndex.html" class="top-link">Back to Overview</a>
+    </header>
+    <main class="layout container">
+        <!-- Page Title -->
+        <section id="page-title">
+            <h1>Databases Enhancements</h1>
+        </section>
+
+   
+        <section>
+            <h4>Database Controller: Why Did You Enhance This Component?</h4>
+            <ul>
+                <li>In the absence of transactions, each insert operation is atomic. However, if a series of insert operations is interrupted (e.g., due to power failure, application crash, or system error), only some of the rows may be successfully written. This can leave the database in a partially updated state and therefore prone to data corruption or inconsistencies.</li>
+                <li>Without explicit transactions, SQLite defaults to auto-commit mode, which means each insert statement involves at least one disk write. This is unacceptable because the application is designed to process any valid CSV structure of any size..</li>
+            </code></pre>
+                           
+         
+            </ul>
+            </section>
+        <section>
+            <h4>Database Controller: How Was the Component Enhanced?</h4>
+            <ul>
+                <li> Ensure Data Integrity During Bulk Database Operations: Ensure data integrity during the bulk insertion of CSV data into SQLite tables by using transactions. Transactions guarantee that either all insert operations succeed, or none are applied.</li>
+                <li> Transactions improve performance by dramatically reducing the number of disk writes. With transactions, SQLite buffers database changes in memory. This makes overall process becomes much faster as the disk write happens only once at the end of the transaction.</li>
+    
+                <a href="https://github.com/phoenixlinx/EzCSVCRUDtoDBConverter/blob/main/EzCSVCRUDtoDBConverter/src/SQLiteHandler.cpp#L216-290" class="github-link" target="_blank">View Enhanced Artifact on GitHub</a>
+        </section>
+
+
+
+   
+        <section id="reflection" class="skills">
+            <h2>Next Steps</h2>
+            <ul>
+            <p>For a detailed reflection on the challenges faced, skills developed, and lessons learned, visit the reflection page.</p>
+            <li><a  href="databasesReflection.html" class="highlight-link">Read Reflection Page</a></li>
+        </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Alfredo Martinez</p>
+    </footer>
+</body>
+</html>
